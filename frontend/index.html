@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AntarMan | AI Mental Health Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">AM</span>
+        <div>
+          <span class="brand__name">AntarMan</span>
+          <span class="brand__tag">AI Mental Health Support Platform</span>
+        </div>
+      </div>
+      <p class="site-header__pill">Anonymous · Privacy-first · Educational Project</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <h1 class="hero__title">Anonymous AI-Assisted Emotional Support</h1>
+      <p class="hero__lead">
+        A full-stack student project for multi-modal emotional check-ins. Users can submit text, audio, image, or video, receive emotion analysis and guidance, and engage in anonymous peer support.
+      </p>
+      <p id="launchMeta" class="hero__meta">Live status: checking...</p>
+    </section>
+
+    <div class="layout">
+      <section class="panel panel--accent" id="share">
+        <div class="panel__head">
+          <span class="panel__icon" aria-hidden="true">01</span>
+          <div>
+            <h2 class="panel__title">Emotion Analysis</h2>
+            <p class="panel__sub">Submit text or upload media. The system detects emotion, intensity, and emergency signals.</p>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label class="label" for="country">Region for helplines</label>
+          <div class="select-wrap">
+            <select id="country" class="input input--select">
+              <option value="india">India</option>
+              <option value="usa">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="default">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="textInput">What’s on your mind?</label>
+          <textarea id="textInput" class="input input--textarea" placeholder="Write freely—there’s no judgment here…" rows="5"></textarea>
+        </div>
+        <div class="quick-presets" aria-label="Quick demo presets">
+          <button type="button" class="preset-chip" data-preset="calm">Sample: Mild mood</button>
+          <button type="button" class="preset-chip" data-preset="stress">Sample: Stress</button>
+          <button type="button" class="preset-chip" data-preset="crisis">Sample: Crisis</button>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="sendTextBtn" class="btn btn--primary">
+            <span class="btn__text">Analyze text</span>
+            <span class="btn__spinner" hidden aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="divider">
+          <span>or upload</span>
+        </div>
+
+        <div class="upload-block">
+          <label class="file-drop">
+            <input 
+              type="file" 
+              id="fileInput" 
+              class="file-drop__input"
+              accept="audio/*,image/*,video/*,.wav,.mp3,.m4a,.ogg,.flac,.jpg,.jpeg,.png,.gif,.bmp,.mp4,.avi,.mov,.mkv,.flv"
+            />
+            <span class="file-drop__label">Choose audio, image, or video</span>
+            <span class="file-drop__hint">Speech, captions, or a short clip—we’ll interpret what we can.</span>
+          </label>
+          <button type="button" id="uploadBtn" class="btn btn--secondary">
+            <span class="btn__text">Upload &amp; analyze</span>
+            <span class="btn__spinner" hidden aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div id="result" class="result-panel" hidden></div>
+      </section>
+
+      <section class="panel" id="peer">
+        <div class="panel__head">
+          <span class="panel__icon panel__icon--soft" aria-hidden="true">02</span>
+          <div>
+            <h2 class="panel__title">Anonymous Peer Support</h2>
+            <p class="panel__sub">Post and reply anonymously. Content is filtered for basic safety and moderation.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="peerPostText">Post to the community</label>
+          <textarea id="peerPostText" class="input input--textarea input--compact" placeholder="Share encouragement or ask for solidarity…" rows="3"></textarea>
+        </div>
+        <div class="actions">
+          <button type="button" id="postBtn" class="btn btn--ghost">
+            <span class="btn__text">Post anonymously</span>
+            <span class="btn__spinner" hidden aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div id="peerFeed" class="peer-feed"></div>
+        <p id="peerEmpty" class="empty-hint">No posts yet—be the first to reach out.</p>
+      </section>
+
+      <section class="panel panel--chart" id="stats">
+        <div class="panel__head">
+          <span class="panel__icon panel__icon--chart" aria-hidden="true">03</span>
+          <div>
+            <h2 class="panel__title">Mood Trend Analytics</h2>
+            <p class="panel__sub">Aggregated anonymous emotion frequency over the last 7 days.</p>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="moodChart" height="220"></canvas>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>This is an academic project and not a replacement for professional care. In high-risk situations, contact local emergency services or official helplines immediately.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
